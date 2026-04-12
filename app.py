@@ -23,40 +23,46 @@ st.subheader("⚙ Manual Battery Prediction")
 col1, col2 = st.columns(2)
 
 with col1:
-    voltage = st.number_input("⚡ Voltage (V)", min_value=0.0)
-    current = st.number_input("🔌 Current (A)", min_value=0.0)
-    temperature = st.number_input("🌡 Temperature (°C)", min_value=0.0)
+    voltage = st.number_input("⚡ Voltage (V)", min_value=0.0,placeholder="Enter voltage")
+    current = st.number_input("🔌 Current (A)", min_value=0.0,placeholder="Enter current")
+    temperature = st.number_input("🌡 Temperature (°C)", min_value=0.0,placeholder="Enter temperature")
+
 
 with col2:
-    capacity = st.number_input("🔋 Capacity (Ah)", min_value=0.0)
-    cycle = st.number_input("🔄 Charge Cycle", min_value=0)
+    capacity = st.number_input("🔋 Capacity (Ah)", min_value=0.0, placeholder="Enter capacity")
+    cycle = st.number_input("🔄 Charge Cycle", min_value=0,placeholder="Enter cycle")
 
 if st.button("🔍 Predict Battery SOH"):
 
-    input_data = np.array([[voltage, current, temperature, capacity, cycle]])
-    prediction = model.predict(input_data)[0]
-
-    st.success(f"🔋 Predicted Battery SOH: {prediction:.2f}%")
-
-    # Battery condition
-    if prediction > 80:
-        st.success("Battery Condition: GOOD ✅")
-    elif prediction > 60:
-        st.warning("Battery Condition: MODERATE ⚠")
+    if voltage == 0 or current == 0 or temperature == 0 or capacity == 0 or cycle == 0:
+        st.warning("⚠️ Please enter all values before prediction")
+        
+    
     else:
-        st.error("Battery Condition: POOR ❌")
+        input_data = np.array([[voltage, current, temperature, capacity, cycle]])
+        prediction = model.predict(input_data)[0]
 
-    # Manual prediction graph
-    st.subheader("📊 Manual Prediction Visualization")
+        st.success(f"🔋 Predicted Battery SOH: {prediction:.2f}%")
 
-    fig, ax = plt.subplots()
+        # Battery condition
+        if prediction > 80:
+            st.success("Battery Condition: GOOD ✅")
+        elif prediction > 60:
+            st.warning("Battery Condition: MODERATE ⚠")
+        else:
+            st.error("Battery Condition: POOR ❌")
+        
+        #Graph
+        st.subheader("📊 Manual Prediction Visualization")
+        
+        fig, ax = plt.subplots()
 
-    ax.bar(["Predicted SOH"], [prediction], color="green")
+        ax.bar(["Predicted SOH"], [prediction], color="green")
 
-    ax.set_ylabel("SOH (%)")
-    ax.set_ylim(0, 100)
+        ax.set_ylabel("SOH (%)")
+        ax.set_ylim(0, 100)
 
-    st.pyplot(fig)
+        st.pyplot(fig)
 
 st.markdown("---")
 
