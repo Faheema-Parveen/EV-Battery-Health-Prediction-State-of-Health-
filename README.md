@@ -29,7 +29,7 @@ To develop a machine learning-based system that predicts the State-of-Health (So
 <img width="928" height="436" alt="Screenshot 2026-04-12 164815" src="https://github.com/user-attachments/assets/e15c9574-f92a-4695-9b53-5167c06e01da" />
 <img width="923" height="440" alt="Screenshot 2026-04-12 164903" src="https://github.com/user-attachments/assets/6508b174-e19e-4681-bdac-84679684495f" />
 
-## 2. SOH with Predictive SOH
+## 2. SOH with Predictive SOH Output
 <img width="931" height="181" alt="Screenshot 2026-04-12 143611" src="https://github.com/user-attachments/assets/d4c1d503-08ee-4da5-bd2b-27e41bae8021" />
 <img width="968" height="741" alt="Screenshot 2026-04-12 143643" src="https://github.com/user-attachments/assets/5771927d-c607-45a1-9b23-bfea96569cd8" />
 <img width="924" height="192" alt="Screenshot 2026-04-12 163559" src="https://github.com/user-attachments/assets/efc84d26-6f27-4cd5-9404-872d93c0fc6b" />
